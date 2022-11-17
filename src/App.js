@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Routes, Route } from 'react-router-dom';
+import "./App.css";
+import Handler from "./components/Handler";
 
+// TODO: add function comments here
 function App() {
+  const [currentlyReadingBooks, setCurrentlyReadingBooks] = useState([]);
+  const [wantToReadBooks, setWantToReadBooks] = useState([]);
+  const [readBooks, setReadBooks] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+      <Routes>
+        <Route exact path='/' element={
+          <Handler
+            currentlyReadingBooks={currentlyReadingBooks}
+            wantToReadBooks={wantToReadBooks}
+            readBooks={readBooks}
+          />
+        } />
+      </Routes>
+    
   );
 }
 
