@@ -1,4 +1,5 @@
 import "../App.css";
+import AddBook from "./AddBook";
 import CurrentlyReading from "./CurrentlyReading";
 import Read from "./Read";
 import WantToRead from "./WantToRead";
@@ -16,6 +17,7 @@ function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateB
               <CurrentlyReading currentlyReadingBooks={currentlyReadingBooks} setUpdateBook={setUpdateBook}/>
               <WantToRead wantToReadBooks={wantToReadBooks} setUpdateBook={setUpdateBook}/>
               <Read readBooks={readBooks} setUpdateBook={setUpdateBook}/>
+              <AddBook />
             </div>
           </div>
         </div>
