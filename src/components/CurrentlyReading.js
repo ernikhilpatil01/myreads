@@ -2,12 +2,13 @@ import { useState } from "react";
 import "../App.css";
 
 // TODO: add function comments here
-const CurrentlyReading = ({currentlyReadingBooks}) =>{
+const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
     const [selectedShelf, setSelectedShelf] = useState('none');
     const handleChange = (value, book) =>{
         console.log("moving "+book['title']+" to "+value);
         if(value!=="currentlyReading" && value !== 'none'){
-            // TODO: add update function here
+            //added shelf update function
+            setUpdateBook({book:book, shelf:value, update:true});
         }
         setSelectedShelf('none');
     }

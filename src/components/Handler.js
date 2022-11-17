@@ -4,7 +4,7 @@ import Read from "./Read";
 import WantToRead from "./WantToRead";
 
 // TODO: add function comments here
-function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks }) {
+function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateBook }) {
   return (
     <div className="app">
         <div className="list-books">
@@ -13,9 +13,9 @@ function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks }) {
           </div>
           <div className="list-books-content">
             <div>
-              <CurrentlyReading currentlyReadingBooks={currentlyReadingBooks} />
-              <WantToRead wantToReadBooks={wantToReadBooks} />
-              <Read readBooks={readBooks} />
+              <CurrentlyReading currentlyReadingBooks={currentlyReadingBooks} setUpdateBook={setUpdateBook}/>
+              <WantToRead wantToReadBooks={wantToReadBooks} setUpdateBook={setUpdateBook}/>
+              <Read readBooks={readBooks} setUpdateBook={setUpdateBook}/>
             </div>
           </div>
         </div>
