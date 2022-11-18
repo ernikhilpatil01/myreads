@@ -9,7 +9,8 @@ const AddBook = ({currentlyReadingBooks, readBooks, wantToReadBooks, searchedTex
                 to={{
                 pathname:'/add-book',
                 state:{currentlyReadingBooks, readBooks, wantToReadBooks, searchedText, setSearchedText}
-                }}>Add a book</Link>
+                }}
+            >Add a book</Link>
         </div>
     );
 }

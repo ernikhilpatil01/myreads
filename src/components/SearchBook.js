@@ -16,25 +16,25 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
   }
   useEffect(() => {
     let searched = true;
-    const getSearchedBook = async (query) =>{
+    const getSearchedBook = async (query) => {
       if(searched){
-        await BooksAPI.search(query, 5).then((books)=>{
-          if(Object.values(books)[0] !== "empty query" && typeof books !== "undefined"){
+        await BooksAPI.search(query, 5).then((books)=> {
+          if(Object.values(books)[0] !== "empty query" && typeof books !== "undefined") {
             setSearchedBook([Object.values(books).map((book)=>book)]);
           }
-        })
+        });
       }
     }
-    if(searched){
-      if(searchedText !== ''){
+    if(searched) {
+      if(searchedText !== '') {
         getSearchedBook(searchedText);
-      }else{
+      } else {
         setSearchedBook([]);
       }
     }
     return () => {
       searched = false;
-      if(searchedText === ''){
+      if(searchedText === '') {
         setSearchedBook([]);
       }
     }
@@ -43,12 +43,7 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
   return(
     <div className="search-books">
       <div className="search-books-bar">
-        <Link
-          to="/"
-          className="close-search"
-        >
-          Close
-        </Link>
+        <Link to="/" className="close-search">Close</Link>
         <div className="search-books-input-wrapper">
           <input
             type="text"
@@ -59,7 +54,7 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid" key={1}>
+        <ol className="books-grid">
         {
           searchedBook.map((book) => {
             return Object.values(book).map((bk)=>{
