@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-// TODO: add function comments here
+/**
+* @description Represents a WantToRead component
+* @constructor
+* @param {array} wantToRead - books present in want to read shelf
+* @param {func} setUpdateBook - to update the book shelf
+* @returns {component} return component
+*/
 const WantToRead = ({ wantToReadBooks, setUpdateBook }) =>{
     const [selectedShelf, setSelectedShelf] = useState('none');
     const handleChange = (value, book) =>{
@@ -66,6 +72,7 @@ const WantToRead = ({ wantToReadBooks, setUpdateBook }) =>{
     );
 }
 
+//propTypes of the WantToRead component are defined
 WantToRead.propTypes = {
     wantToReadBooks: PropTypes.array,
     setUpdateBook: PropTypes.func

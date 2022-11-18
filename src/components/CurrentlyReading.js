@@ -2,7 +2,13 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import "../App.css";
 
-// TODO: add function comments here
+/**
+* @description Represents a CurrentlyReading component
+* @constructor
+* @param {array} currentlyReadingBooks - books present in currently reading shelf
+* @param {func} setUpdateBook - to update the book shelf
+* @returns {component} return component
+*/
 const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
     const [selectedShelf, setSelectedShelf] = useState('none');
     const handleChange = (value, book) =>{
@@ -62,6 +68,8 @@ const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
         </div>
     );
 }
+
+//propTypes of the CurrentlyReading component are defined
 CurrentlyReading.propTypes = {
     currentlyReadingBooks: PropTypes.array,
     setUpdateBook: PropTypes.func

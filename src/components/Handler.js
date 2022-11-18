@@ -5,7 +5,15 @@ import CurrentlyReading from "./CurrentlyReading";
 import Read from "./Read";
 import WantToRead from "./WantToRead";
 
-// TODO: add function comments here
+/**
+* @description Represents a Handler component
+* @constructor
+* @param {array} currentlyReadingBooks - books present in currently reading shelf
+* @param {array} readBooks - books present in currently reading shelf
+* @param {array} wantToReadBooks - books present in currently reading shelf
+* @param {func} setUpdateBook - to update the book shelf
+* @returns {component} return component
+*/
 function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateBook }) {
   return (
     <div className="app">
@@ -26,6 +34,7 @@ function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateB
   );
 }
 
+//propTypes of the Handler component are defined
 Handler.propTypes = {
   currentlyReadingBooks: PropTypes.array,
   wantToReadBooks: PropTypes.array,

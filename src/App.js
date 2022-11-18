@@ -5,7 +5,11 @@ import Handler from "./components/Handler";
 import SearchBook from "./components/SearchBook";
 import * as BooksAPI from "./BooksAPI";
 
-// TODO: add function comments here
+/**
+* @description Represents a App component, the main component of the application
+* @constructor
+* @returns {component} return component
+*/
 function App() {
   const [currentlyReadingBooks, setCurrentlyReadingBooks] = useState([]);
   const [wantToReadBooks, setWantToReadBooks] = useState([]);

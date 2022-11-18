@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
 import "../App.css";
 
-// TODO: add function comments here
+/**
+* @description Represents a Addbook component
+* @constructor
+* @param {func} setUpdateBook - to update the book shelf
+* @param {string} searchedText - books present in currently reading shelf
+* @param {func} setSearchedText - books present in currently reading shelf
+* @returns {component} return component
+*/
 const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
   const [searchedBook, setSearchedBook] = useState([]);
   const [selectedShelf, setSelectedShelf] = useState('none');
@@ -101,6 +108,7 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
   );
 }
 
+//propTypes of the SearchBook component are defined
 SearchBook.propTypes = {
   setUpdateBook: PropTypes.func,
   searchedText: PropTypes.string,
