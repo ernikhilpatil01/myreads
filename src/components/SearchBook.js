@@ -19,8 +19,7 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
     const getSearchedBook = async (query) =>{
       if(searched){
         await BooksAPI.search(query, 5).then((books)=>{
-          console.log(Object.values(books)[0]);
-          if(typeof books !== "undefined" || Object.values(books)[0] !== "empty query"){
+          if(Object.values(books)[0] !== "empty query" && typeof books !== "undefined"){
             setSearchedBook([Object.values(books).map((book)=>book)]);
           }
         })
