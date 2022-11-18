@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import "../App.css";
 
 // TODO: add function comments here
@@ -64,6 +65,9 @@ const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
         </div>
     );
 }
-// TODO: add propTypes here
+CurrentlyReading.propTypes = {
+    currentlyReadingBooks: PropTypes.array,
+    setUpdateBook: PropTypes.func
+};
 
 export default CurrentlyReading;

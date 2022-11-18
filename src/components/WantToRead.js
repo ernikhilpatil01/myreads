@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // TODO: add function comments here
 const WantToRead = ({ wantToReadBooks, setUpdateBook }) =>{
@@ -63,6 +64,10 @@ const WantToRead = ({ wantToReadBooks, setUpdateBook }) =>{
         </div>
     );
 }
-// TODO: add propTypes here
+
+WantToRead.propTypes = {
+    wantToReadBooks: PropTypes.array,
+    setUpdateBook: PropTypes.func
+};
 
 export default WantToRead;

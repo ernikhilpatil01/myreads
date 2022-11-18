@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as BooksAPI from '../BooksAPI';
 import "../App.css";
 
 // TODO: add function comments here
-const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) =>{
+const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) => {
   const [searchedBook, setSearchedBook] = useState([]);
   const [selectedShelf, setSelectedShelf] = useState('none');
-  const handleChange = (value, book) =>{
+  const handleChange = (value, book) => {
     if(value !== 'none'){
       setUpdateBook({book:book, shelf:value, update:true});
     }
@@ -18,8 +19,9 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) =>{
     const getSearchedBook = async (query) =>{
       if(searched){
         await BooksAPI.search(query, 5).then((books)=>{
-          if(typeof books !== 'undefined'){
-            setSearchedBook([books.map((book)=>book)]);
+          console.log(Object.values(books)[0]);
+          if(typeof books !== "undefined" || Object.values(books)[0] !== "empty query"){
+            setSearchedBook([Object.values(books).map((book)=>book)]);
           }
         })
       }
@@ -58,7 +60,7 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) =>{
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid">
+        <ol className="books-grid" key={1}>
         {
           searchedBook.map((book) => {
             return Object.values(book).map((bk)=>{
@@ -105,6 +107,10 @@ const SearchBook = ({ setUpdateBook, searchedText, setSearchedText}) =>{
   );
 }
 
-// TODO: add propTypes here
+SearchBook.propTypes = {
+  setUpdateBook: PropTypes.func,
+  searchedText: PropTypes.string,
+  setSearchedText: PropTypes.func
+};
 
 export default SearchBook;

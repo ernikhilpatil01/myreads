@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import "../App.css";
 import AddBook from "./AddBook";
 import CurrentlyReading from "./CurrentlyReading";
@@ -24,6 +25,12 @@ function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateB
     </div>
   );
 }
-// TODO: add propTypes here
+
+Handler.propTypes = {
+  currentlyReadingBooks: PropTypes.array,
+  wantToReadBooks: PropTypes.array,
+  readBooks: PropTypes.array,
+  setUpdateBook: PropTypes.func
+};
 
 export default Handler;
