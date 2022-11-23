@@ -5,27 +5,31 @@ import "../App.css";
 /**
 * @description Represents a CurrentlyReading component
 * @constructor
-* @param {array} currentlyReadingBooks - books present in currently reading shelf
+* @param {array} booksInTheShelf - books present in currently reading shelf
+* @param {string} shelfName - a bookshelf name
 * @param {func} setUpdateBook - to update the book shelf
+* @param {string} shelfName - selected drop down 
+* @param {array} dropdownOptions - drop down options array
 * @returns {component} return component
 */
-const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
+const BookShelf = ({ booksInTheShelf, setUpdateBook, shelfName, dropSelected, dropdownOptions }) =>{
     const [selectedShelf, setSelectedShelf] = useState('none');
     const handleChange = (value, book) =>{
         console.log("moving "+book['title']+" to "+value);
-        if(value!=="currentlyReading" && value !== 'none'){
+        if(value !== 'none'){
             //added shelf update function
             setUpdateBook({book:book, shelf:value, update:true});
         }
         setSelectedShelf('none');
     }
+
     return(
         <div className="bookshelf">
-            <h2 className="bookshelf-title">Currently Reading</h2>
+            <h2 className="bookshelf-title">{shelfName}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
                 {
-                    currentlyReadingBooks.map((book)=>{
+                    booksInTheShelf.map((book)=>{
                         return Object.values(book).map((bk)=>{
                             let imageLink;
                             if(bk.imageLinks !== undefined)
@@ -46,11 +50,11 @@ const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
                                             ></div>
                                             <div className="book-shelf-changer">
                                                 <select value={selectedShelf} onChange={(event)=>handleChange(event.target.value, bk)}>
-                                                    <option value="none" disabled>Move to...</option>
-                                                    <option value="currentlyReading">Currently Reading</option>
-                                                    <option value="wantToRead">Want to Read</option>
-                                                    <option value="read">Read</option>
-                                                    <option value="none">None</option>
+                                                    {
+                                                        dropdownOptions.map((option)=>{
+                                                            return <option key={option.value} value={option.value} disabled={option.value===dropSelected}>{option.name}</option>
+                                                        })
+                                                    }
                                                 </select>
                                             </div>
                                         </div>
@@ -70,9 +74,12 @@ const CurrentlyReading = ({ currentlyReadingBooks, setUpdateBook }) =>{
 }
 
 //propTypes of the CurrentlyReading component are defined
-CurrentlyReading.propTypes = {
-    currentlyReadingBooks: PropTypes.array,
-    setUpdateBook: PropTypes.func
+BookShelf.propTypes = {
+    booksInTheShelf: PropTypes.array,
+    setUpdateBook: PropTypes.func,
+    shelfName: PropTypes.string,
+    dropSelected: PropTypes.string,
+    dropdownOptions: PropTypes.array
 };
 
-export default CurrentlyReading;
+export default BookShelf;

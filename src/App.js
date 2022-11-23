@@ -49,6 +49,30 @@ function App() {
     }
   }, [updateBook])
 
+  //drop down options for the books
+  const dropdownOptions = [
+    {
+        name: "Move to...",
+        value: "none",
+        disabled : false
+    },
+    {
+        name: "Currently Reading",
+        value: "currentlyReading",
+        disabled : false
+    },
+    {
+        name: "Want to Read",
+        value: "wantToRead",
+        disabled : false
+    },
+    {
+        name: "Read",
+        value: "read",
+        disabled : false
+    },
+  ];
+
   return (
     <Routes>
       <Route exact 
@@ -58,17 +82,22 @@ function App() {
             currentlyReadingBooks={currentlyReadingBooks}
             wantToReadBooks={wantToReadBooks}
             readBooks={readBooks}
-            setUpdateBook={setUpdateBook} 
+            setUpdateBook={setUpdateBook}
+            dropdownOptions={dropdownOptions}
           />
         } 
       />
       <Route 
-        path='/add-book'
+        path='/search'
         element={
         <SearchBook 
           setUpdateBook={setUpdateBook}
           searchedText={searchedText}
           setSearchedText={setSearchedText}
+          dropdownOptions={dropdownOptions}
+          currentlyReadingBooks={currentlyReadingBooks}
+          wantToReadBooks={wantToReadBooks}
+          readBooks={readBooks}
         />
         }
       />
