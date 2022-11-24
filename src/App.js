@@ -15,11 +15,16 @@ function App() {
   const [wantToReadBooks, setWantToReadBooks] = useState([]);
   const [readBooks, setReadBooks] = useState([]);
   const [searchedText, setSearchedText] = useState('');
-  const [updateBook, setUpdateBook] = useState({
-    book:Object,
-    shelf:'',
-    update: false
-  });
+  const [updateBook, setUpdateBook] = useState({ book:Object, shelf:'', update: false });
+  const [selectedShelf, setSelectedShelf] = useState('none');
+  
+  const handleChange = (value, book) => {
+    if(value !== ''){
+      book["shelf"] = value;
+      setUpdateBook({book:book, shelf:value, update:true});
+    }
+    setSelectedShelf('');
+  }
 
   useEffect(() => {
     let fetchBooks = true;
@@ -53,8 +58,8 @@ function App() {
   const dropdownOptions = [
     {
         name: "Move to...",
-        value: "none",
-        disabled : false
+        value: "",
+        disabled : true
     },
     {
         name: "Currently Reading",
@@ -71,6 +76,11 @@ function App() {
         value: "read",
         disabled : false
     },
+    {
+      name: "None",
+      value: "none",
+      disabled : false
+    },
   ];
 
   return (
@@ -84,6 +94,8 @@ function App() {
             readBooks={readBooks}
             setUpdateBook={setUpdateBook}
             dropdownOptions={dropdownOptions}
+            selectedShelf={selectedShelf}
+            handleChange={handleChange}
           />
         } 
       />
@@ -98,6 +110,8 @@ function App() {
           currentlyReadingBooks={currentlyReadingBooks}
           wantToReadBooks={wantToReadBooks}
           readBooks={readBooks}
+          selectedShelf={selectedShelf}
+          handleChange={handleChange}
         />
         }
       />

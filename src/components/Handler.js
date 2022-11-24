@@ -11,9 +11,11 @@ import BookShelf from './BookShelf';
 * @param {array} wantToReadBooks - books present in currently reading shelf
 * @param {func} setUpdateBook - to update the book shelf
 * @param {array} dropdownOptions - drop down options array
+* @param {string} selectedShelf - represents selected shelf
+* @param {func} handleChange - handles the shelf change
 * @returns {component} return component
 */
-function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateBook, dropdownOptions }) {
+function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateBook, dropdownOptions, selectedShelf, handleChange }) {
   return (
     <div className="app">
         <div className="list-books">
@@ -22,9 +24,9 @@ function Handler({ currentlyReadingBooks, wantToReadBooks, readBooks, setUpdateB
           </div>
           <div className="list-books-content">
             <div>
-              <BookShelf booksInTheShelf={currentlyReadingBooks} setUpdateBook={setUpdateBook} shelfName={"Currently Reading"} dropSelected={"currentlyReading"} dropdownOptions={dropdownOptions}/>
-              <BookShelf booksInTheShelf={wantToReadBooks} setUpdateBook={setUpdateBook} shelfName={"Want To Read"} dropSelected={"wantToRead"} dropdownOptions={dropdownOptions}/>
-              <BookShelf booksInTheShelf={readBooks} setUpdateBook={setUpdateBook} shelfName={"Read"} dropSelected={"read"} dropdownOptions={dropdownOptions}/>
+              <BookShelf booksInTheShelf={currentlyReadingBooks} setUpdateBook={setUpdateBook} shelfName={"Currently Reading"} dropdownOptions={dropdownOptions} selectedShelf={selectedShelf} handleChange={handleChange}/>
+              <BookShelf booksInTheShelf={wantToReadBooks} setUpdateBook={setUpdateBook} shelfName={"Want To Read"} dropdownOptions={dropdownOptions} selectedShelf={selectedShelf} handleChange={handleChange}/>
+              <BookShelf booksInTheShelf={readBooks} setUpdateBook={setUpdateBook} shelfName={"Read"} dropdownOptions={dropdownOptions} selectedShelf={selectedShelf} handleChange={handleChange}/>
               <AddBook />
             </div>
           </div>
@@ -39,7 +41,9 @@ Handler.propTypes = {
   wantToReadBooks: PropTypes.array,
   readBooks: PropTypes.array,
   setUpdateBook: PropTypes.func,
-  dropdownOptions: PropTypes.array
+  dropdownOptions: PropTypes.array,
+  selectedShelf: PropTypes.string,
+  handleChange: PropTypes.func
 };
 
 export default Handler;
